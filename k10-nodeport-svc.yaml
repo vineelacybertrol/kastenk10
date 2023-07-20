@@ -1,0 +1,16 @@
+cat > k10-nodeport-svc.yaml << EOF
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-nodeport
+  namespace: kasten-io
+spec:
+  selector:
+    service: gateway
+  ports:
+  - name: http
+    port: 8000
+    nodePort: 32000
+  type: NodePort
+EOF
+kubectl apply -f k10-nodeport-svc.yaml
