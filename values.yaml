@@ -1,0 +1,18 @@
+cat <<EOF > values.yaml
+auth:
+  oidcAuth:
+    enabled: true
+    clientID: Kasten
+    clientSecret: KASTEN-CLIENT-SECRET
+    providerURL: http://infra.${INSTRUQT_PARTICIPANT_ID}.instruqt.io:32020/auth/realms/k10lab-realm
+    redirectURL: http://k8s-cluster.$INSTRUQT_PARTICIPANT_ID.instruqt.io:32000
+    scopes: "openid"
+    usernameClaim: preferred_username
+    groupClaim: groups
+    usernamePrefix: "-"
+    prompt: login
+eula:
+  accept: true
+  company: Kasten
+  email: lab@kasten.io
+EOF
